@@ -4,8 +4,8 @@ using System.Text;
 
 namespace InyeccionDependencias.Clientes
 {
-    public interface ICliente
+    public interface IInformacionCliente
     {
-        string ObtenerNombreClientePorId(int idCliente);
+        List<Cliente> ObtenerNombreClientePorId(int idCliente);
     }
 }

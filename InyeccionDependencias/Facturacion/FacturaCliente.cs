@@ -1,4 +1,5 @@
-﻿using InyeccionDependencias.Impuestos;
+﻿using InyeccionDependencias.Clientes;
+using InyeccionDependencias.Impuestos;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,21 +10,25 @@ namespace InyeccionDependencias.Facturacion
     {
         //Campo de clase del tipo Facturacion
         /// <summary>
-        /// Si es privado y de solo lectura, el beneficio es que no puede cambiarlo 
+        /// Es privado y de solo lectura, para que no sea cambiado 
         /// inadvertidamente desde otra parte de esa clase después de que se haya inicializado. 
         /// El modificador de solo lectura asegura que al campo solo se le puede dar un valor 
         /// durante su inicialización o en su constructor de clase.
-        /// Si algo no debería cambiar funcionalmente después de la inicialización, 
-        /// siempre es una buena práctica usar construcciones de lenguaje disponibles 
-        /// para hacer cumplir
         /// </summary>
         private readonly IServicioFacturacion _facturacion;
         private readonly ICalculoImpuestos _calculoImpuestos;
+        private readonly IInformacionCliente _informacionCliente;
 
-        public FacturaCliente(IServicioFacturacion servicioFacturacion, ICalculoImpuestos calculoImpuestos)
+        public FacturaCliente
+            (
+                  IServicioFacturacion servicioFacturacion, 
+                  ICalculoImpuestos calculoImpuestos,
+                  IInformacionCliente informacionCliente
+            )
         {
             _facturacion = servicioFacturacion;
             _calculoImpuestos = calculoImpuestos;
+            _informacionCliente = informacionCliente;
         }
 
 

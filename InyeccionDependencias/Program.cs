@@ -1,4 +1,5 @@
-﻿using InyeccionDependencias.Facturacion;
+﻿using InyeccionDependencias.Clientes;
+using InyeccionDependencias.Facturacion;
 using InyeccionDependencias.Impuestos;
 using System;
 
@@ -9,7 +10,13 @@ namespace InyeccionDependencias
         static void Main(string[] args)
         {
            
-            var ReporteFacturacion = new FacturaCliente(new ServicioFacturacion(), new CalculoImpuestos());
+            var ReporteFacturacion = new FacturaCliente
+                            (
+                                 new ServicioFacturacion(), 
+                                 new CalculoImpuestos(),
+                                 new InformacionCliente()
+                            );
+
             Console.WriteLine(ReporteFacturacion.TotalFacturacion());
             Console.ReadLine();
 
