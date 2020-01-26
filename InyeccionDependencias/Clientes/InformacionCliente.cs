@@ -8,20 +8,24 @@ namespace InyeccionDependencias.Clientes
 {
     public class InformacionCliente : IInformacionCliente
     {
-        public List<Cliente> ObtenerNombreClientePorId(int IdCliente)
+        public string ObtenerNombrePorId(int IdCliente)
         {
+            string response;
             try
             {
                List<Cliente> LstClientes = new List<Cliente>()
                 {
                     new Cliente{Id=1, Nombre="Pedro"},
                     new Cliente{Id=2, Nombre="Pablo"},
-                    new Cliente{Id=3, Nombre="Ricardo"},
-                    new Cliente{Id=4, Nombre="Ivan"}
+                    new Cliente{Id=3, Nombre="Pascual"},
+                    new Cliente{Id=4, Nombre="Pilar"}
                 };
 
-                return LstClientes.Where(x => x.Id == IdCliente)
-                    .Select(x => new Cliente() { Id = x.Id, Nombre = x.Nombre }).ToList();
+                 response= LstClientes.Where(x => x.Id == IdCliente).FirstOrDefault().Nombre;
+
+                return response;
+
+
             }
             catch (Exception err)
             {

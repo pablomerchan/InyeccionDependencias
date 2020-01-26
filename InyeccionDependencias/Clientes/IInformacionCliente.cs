@@ -6,6 +6,6 @@ namespace InyeccionDependencias.Clientes
 {
     public interface IInformacionCliente
     {
-        List<Cliente> ObtenerNombreClientePorId(int idCliente);
+        string ObtenerNombrePorId(int idCliente);
     }
 }

@@ -1,15 +1,13 @@
-﻿using System;
+﻿using InyeccionDependencias1.Bases;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace InyeccionDependencias.Clientes
 {
-    public class Cliente
+    public class Cliente : Persona
     {
-        [Key]
-        public int Id { get; set; }
-
-        public string Nombre { get; set; }
+       public double ValorAFacturar { get; set; }
     }
 }

@@ -17,7 +17,13 @@ namespace InyeccionDependencias
                                  new InformacionCliente()
                             );
 
-            Console.WriteLine(ReporteFacturacion.TotalFacturacion());
+
+            var factura = ReporteFacturacion.FacturaIndividualCliente(1);
+            Console.WriteLine("Identificacion cliente: " + factura.IdCliente);
+            Console.WriteLine("Nombre cliente: " + factura.Nombre);
+            Console.WriteLine("Total antes impuestos " + factura.TotalAntesImpuestos);
+            Console.WriteLine("Valor impuestos: "+ factura.Iva);
+            Console.WriteLine("Valor total con impuestos: " + factura.TotalConImpuestos);
             Console.ReadLine();
 
         }

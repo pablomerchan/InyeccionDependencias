@@ -10,6 +10,6 @@ namespace InyeccionDependencias.Facturacion
         /// Retorna el valor actual de los servicios prestados
         /// </summary>
         /// <returns></returns>
-        int ValorActualServicios();
+        int ValorActualServicios( int IdCliente );
     }
 }

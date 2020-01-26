@@ -1,5 +1,6 @@
 ﻿using InyeccionDependencias.Clientes;
 using InyeccionDependencias.Impuestos;
+using InyeccionDependencias1.Facturacion;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,7 +16,7 @@ namespace InyeccionDependencias.Facturacion
         /// El modificador de solo lectura asegura que al campo solo se le puede dar un valor 
         /// durante su inicialización o en su constructor de clase.
         /// </summary>
-        private readonly IServicioFacturacion _facturacion;
+        private readonly IServicioFacturacion _Serviciofacturacion;
         private readonly ICalculoImpuestos _calculoImpuestos;
         private readonly IInformacionCliente _informacionCliente;
 
@@ -26,21 +27,29 @@ namespace InyeccionDependencias.Facturacion
                   IInformacionCliente informacionCliente
             )
         {
-            _facturacion = servicioFacturacion;
+            _Serviciofacturacion = servicioFacturacion;
             _calculoImpuestos = calculoImpuestos;
             _informacionCliente = informacionCliente;
         }
 
 
-        public double TotalFacturacion()
+        public Factura FacturaIndividualCliente(int IdCliente)
         {
-            double response;
-            var TotalAntesImpuestos= _facturacion.ValorActualServicios();
-            double ivaServicios = _calculoImpuestos.ValorIva(TotalAntesImpuestos);
+            var facturaIndividual = new Factura();
 
-            response = TotalAntesImpuestos + ivaServicios;
-            return response;
+            string NombreCliente = _informacionCliente.ObtenerNombrePorId(IdCliente);
+            double ValorSinImpuestos=_Serviciofacturacion.ValorActualServicios(IdCliente);
+            double ValorImpuestos = _calculoImpuestos.ValorIva(ValorSinImpuestos);
+            double ValorConImpuestos = (ValorSinImpuestos + ValorImpuestos);
 
+            facturaIndividual.IdCliente = IdCliente;
+            facturaIndividual.Nombre = NombreCliente;
+            facturaIndividual.TotalAntesImpuestos = ValorSinImpuestos;
+            facturaIndividual.Iva = ValorImpuestos;
+            facturaIndividual.TotalConImpuestos = ValorConImpuestos;
+            
+;
+            return facturaIndividual;
         }
 
     }
