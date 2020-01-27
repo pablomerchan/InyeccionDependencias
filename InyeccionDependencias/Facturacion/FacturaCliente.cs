@@ -1,9 +1,6 @@
 ﻿using InyeccionDependencias.Clientes;
 using InyeccionDependencias.Impuestos;
 using InyeccionDependencias1.Facturacion;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace InyeccionDependencias.Facturacion
 {
@@ -27,9 +24,9 @@ namespace InyeccionDependencias.Facturacion
                   IInformacionCliente informacionCliente
             )
         {
+            _informacionCliente = informacionCliente;
             _Serviciofacturacion = servicioFacturacion;
             _calculoImpuestos = calculoImpuestos;
-            _informacionCliente = informacionCliente;
         }
 
 
